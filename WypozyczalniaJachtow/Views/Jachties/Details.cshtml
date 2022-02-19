@@ -1,0 +1,90 @@
+﻿@model WypozyczalniaJachtow.Models.Jachty
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Jachty</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zdjecie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zdjecie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Port)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Port)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IloscMiejsc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IloscMiejsc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dlugosc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dlugosc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Szerokosc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Szerokosc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Silnik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Silnik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.koszt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.koszt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Wyposazenie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Wyposazenie)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,65 @@
+﻿@model IEnumerable<WypozyczalniaJachtow.Models.Rezerwacja>
+
+@{
+    ViewBag.Title = "Index";
+}
+<p>
+    @Html.ActionLink("Dodaj rezerwację", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Imię Rezerwującego
+        </th>
+        <th>
+            Numer telefonu
+        </th>
+        <th>
+            Początek rezerwacji
+        </th>
+        <th>
+            Zakończenie rezerwacji
+        </th>
+        <th>
+            @Html.DisplayNameFor(Model => Model.Zaliczka)
+        </th>
+        <th>
+            Nazwa jachtu
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+
+    
+    string DataDo = item.DataDo.Value.ToString("dd.MM.yyyy");
+    string DataOd = item.DataOd.Value.ToString("dd.MM.yyyy");
+    
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Imie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NrTel)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => DataOd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => DataDo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Zaliczka)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Jachty.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Detale", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

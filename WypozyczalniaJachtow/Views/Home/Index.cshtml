@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<section class="py-5 border-bottom" id="features">
+    <div class="container px-3 my-3">
+        <div class="row gx-5">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="feature bg-dark bg-gradient text-white rounded mb-3 text-center"><i class="h1 bi bi-image-fill"></i></div>
+                <h2 class="h4 fw-bolder">Żegluga śródlądowa</h2>
+                <a class="text-decoration-none"> @Html.ActionLink("Czytaj więcej", "inland", "Home")
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="feature bg-dark bg-gradient text-white rounded mb-3 text-center"><i class="h1 bi bi-water"></i></div>
+                <h2 class="h4 fw-bolder ">Żegluga morska</h2>
+                <a class="text-decoration-none">
+                    @Html.ActionLink("Czytaj więcej", "sea", "Home")
+                    <i class="bi bi-arrow-right"></i>
+                            </a>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature bg-dark bg-gradient text-white rounded mb-3 text-center"><i class="h1 bi bi-cart-plus-fill"></i></div>
+                <h2 class="h4 fw-bolder">Wynajem</h2>
+                <a class="text-decoration-none">
+                    @Html.ActionLink("Czytaj więcej", "index", "Rezerwacjas")
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

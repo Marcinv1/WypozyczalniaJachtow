@@ -1,0 +1,72 @@
+﻿@model WypozyczalniaJachtow.Models.Rezerwacja
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+
+<h3>Potwierdź usunięcie rezerwacji:</h3>
+<br>
+<div>
+    <h4>Rezerwacja</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+        @*    @Html.DisplayNameFor(model => model.Imie)*@Imię Rezerwującego
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+
+        <dt>
+            @*   @Html.DisplayNameFor(model => model.NrTel)*@Numer telefonu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NrTel)
+        </dd>
+
+        <dt>
+            @*    @Html.DisplayNameFor(model => model.DataOd)*@Początek rezerwacji
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataOd)
+        </dd>
+
+        <dt>
+         @*   @Html.DisplayNameFor(model => model.DataDo)*@ Koniec rezerwacji
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataDo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zaliczka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zaliczka)
+        </dd>
+
+        <dt>
+         @*   @Html.DisplayNameFor(model => model.Jachty.Name)*@ Nazwa jachtu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jachty.Name)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Powrót", "Index")
+        </div>
+    }
+</div>

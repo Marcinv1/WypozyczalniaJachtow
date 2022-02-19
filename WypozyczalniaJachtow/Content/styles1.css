@@ -1,0 +1,7 @@
+.yachtimage {
+    max-width: 50%;
+    padding: 1em;
+  }
+  .yachtimage > img {
+    width: 50%;
+  }

@@ -1,0 +1,69 @@
+﻿@model WypozyczalniaJachtow.Models.Rezerwacja
+
+@{
+    ViewBag.Title = "Details";
+}
+<div>
+    <h4>Rezerwacja</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @*    @Html.DisplayNameFor(model => model.Imie)*@Imię Rezerwującego
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imie)
+        </dd>
+
+        <dt>
+            @*   @Html.DisplayNameFor(model => model.NrTel)*@Numer telefonu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NrTel)
+        </dd>
+
+        <dt>
+            @*    @Html.DisplayNameFor(model => model.DataOd)*@Początek rezerwacji
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataOd)
+        </dd>
+
+        <dt>
+            @*   @Html.DisplayNameFor(model => model.DataDo)*@ Koniec rezerwacji
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataDo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Zaliczka)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Zaliczka)
+        </dd>
+
+        <dt>
+            @*   @Html.DisplayNameFor(model => model.Jachty.Name)*@ Nazwa jachtu
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Jachty.Name)
+        </dd>
+
+    </dl>
+</div>
+<div class="form-group row mt-3 mb-3">
+
+    <div class="col-md-6 pe-1">
+        @Html.ActionLink("Wróć do listy", "Index", "Rezerwacjas", new { @class = "btn bg-dark text-light col-12" })
+
+    </div>
+    <div class="col-md-6 ps-1">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }, new { @class = "btn bg-dark text-light col-12" })
+    </div>
+</div>
