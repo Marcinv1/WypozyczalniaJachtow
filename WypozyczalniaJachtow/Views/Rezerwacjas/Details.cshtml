@@ -28,7 +28,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DataOd)
+            @*@Html.DisplayFor(model => model.DataOd)*@
+            @Model.DataOd.Value.ToString("dd/MM/yyyy")
         </dd>
 
         <dt>
@@ -36,7 +37,8 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DataDo)
+            @*@Html.DisplayFor(model => model.DataDo)*@
+            @Model.DataDo.Value.ToString("dd/MM/yyyy")
         </dd>
 
         <dt>
@@ -44,7 +46,15 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Zaliczka)
+           @* @Html.DisplayFor(model => model.Zaliczka)*@
+            @if (Model.Zaliczka == true)
+            {
+                @Html.Encode("Zapłacono")
+            }
+            else
+            {
+                @Html.Encode("Nie zapłacono")
+            }
         </dd>
 
         <dt>

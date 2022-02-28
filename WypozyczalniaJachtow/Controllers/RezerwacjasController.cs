@@ -52,14 +52,21 @@ namespace WypozyczalniaJachtow.Controllers
             {
                 var query = db.Rezerwacja.Where(x =>
                     (rezerwacja.JachtID == x.JachtID) &&
-
-                    ((rezerwacja.DataOd > x.DataOd && rezerwacja.DataOd < x.DataDo) ||
-                    (rezerwacja.DataDo > x.DataOd && rezerwacja.DataDo < x.DataDo))
+                    (
+                        (rezerwacja.DataOd > x.DataOd && rezerwacja.DataOd < x.DataDo) ||
+                        (rezerwacja.DataDo > x.DataOd && rezerwacja.DataDo < x.DataDo)
+                    )
                 );
 
                 var a = query.ToList();
 
                 ViewBag.JachtIDs = new SelectList(db.Jachty, "ID", "Name");
+
+                if (rezerwacja.DataDo < rezerwacja.DataOd || rezerwacja.DataOd < DateTime.Today)
+                {
+                        ModelState.AddModelError("Error", "Nie można zarezerwować z datą wsteczną.");
+                        return View(rezerwacja);
+                }
 
                 if (a.Count > 0)
                 {
@@ -103,7 +110,14 @@ namespace WypozyczalniaJachtow.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                if (rezerwacja.DataDo < rezerwacja.DataOd)
+                {
+                    ModelState.AddModelError("Error", "Nie można zarezerwować z datą wsteczną.");
+                }
                 db.Entry(rezerwacja).State = EntityState.Modified;
+
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

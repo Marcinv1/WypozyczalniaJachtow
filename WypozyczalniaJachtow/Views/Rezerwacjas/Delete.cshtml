@@ -4,7 +4,6 @@
     ViewBag.Title = "Delete";
 }
 
-
 <h3>Potwierdź usunięcie rezerwacji:</h3>
 <br>
 <div>
@@ -12,7 +11,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-        @*    @Html.DisplayNameFor(model => model.Imie)*@Imię Rezerwującego
+            @*    @Html.DisplayNameFor(model => model.Imie)*@Imię Rezerwującego
         </dt>
 
         <dd>
@@ -32,15 +31,17 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DataOd)
+            @*@Html.DisplayFor(model => model.DataOd)*@
+            @Model.DataOd.Value.ToString("dd/MM/yyyy")
         </dd>
 
         <dt>
-         @*   @Html.DisplayNameFor(model => model.DataDo)*@ Koniec rezerwacji
+            @*   @Html.DisplayNameFor(model => model.DataDo)*@ Koniec rezerwacji
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DataDo)
+            @*@Html.DisplayFor(model => model.DataDo)*@
+            @Model.DataDo.Value.ToString("dd/MM/yyyy")
         </dd>
 
         <dt>
@@ -48,11 +49,19 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Zaliczka)
+           @* @Html.DisplayFor(model => model.Zaliczka)*@
+            @if (Model.Zaliczka == true)
+            {
+                @Html.Encode("Zapłacono")
+            }
+            else
+            {
+                @Html.Encode("Nie zapłacono")
+            }
         </dd>
 
         <dt>
-         @*   @Html.DisplayNameFor(model => model.Jachty.Name)*@ Nazwa jachtu
+            @*   @Html.DisplayNameFor(model => model.Jachty.Name)*@ Nazwa jachtu
         </dt>
 
         <dd>
@@ -61,12 +70,20 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Powrót", "Index")
+        <div class="form-group row mt-3 mb-3">
+
+            <div class="col-md-6 pe-1">
+                @Html.ActionLink("Wróć do listy", "Index", "Rezerwacjas", new { @class = "btn bg-dark text-light col-12" })
+            </div>
+
+            <div class="col-md-6 ps-1">
+                <button type="submit" value="Delete" class="btn bg-dark text-light col-12">Usuń rezerwację</button>
+            </div>
         </div>
     }
 </div>
+

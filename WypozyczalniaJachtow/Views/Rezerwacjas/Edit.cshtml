@@ -16,7 +16,7 @@
         @Html.HiddenFor(model => model.ID)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.JachtID, "JachtID", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.JachtID, "Nazwa jachtu", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("JachtID", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.JachtID, "", new { @class = "text-danger" })
@@ -24,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Imie, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Imie, "Imię rezerwującego", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Imie, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Imie, "", new { @class = "text-danger" })
@@ -32,38 +32,48 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.NrTel, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.NrTel, "Numer telefonu", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NrTel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.NrTel, new { htmlAttributes = new { @class = "form-control", placeholder = "format XXX-XXX-XXX" } })
                 @Html.ValidationMessageFor(model => model.NrTel, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DataOd, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DataOd, "Rozpoczęcie rezerwacji", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DataOd, new { htmlAttributes = new { @class = "form-control" } })
-             @*   @Html.ValidationMessageFor(model => model.DataOd, "", new { @class = "text-danger" })*@
+                @Html.EditorFor(model => model.DataOd, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                @Html.ValidationMessageFor(model => model.DataOd, "", new { @class = "text-danger" })
+
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.DataDo, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.DataDo, "Zakończenie rezerwacji", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DataDo, new { htmlAttributes = new { @class = "form-control" } })
-             @*   @Html.ValidationMessageFor(model => model.DataDo, "", new { @class = "text-danger" })*@
+                @Html.EditorFor(model => model.DataDo, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                @Html.ValidationMessageFor(model => model.DataDo, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Zaliczka, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Zaliczka)
-                    @Html.ValidationMessageFor(model => model.Zaliczka, "", new { @class = "text-danger" })
-                </div>
-            </div>
+            @Html.LabelFor(model => model.Zaliczka, "Zaliczka", htmlAttributes: new { @class = "control-label col-md-4" })
+
+            @{
+                var listItems = new List<SelectListItem>()
+                            {
+                            new SelectListItem {Text = "Tak",   Value = true.ToString()},
+                            new SelectListItem {Text = "Nie", Value = false.ToString()}
+                        };
+            }
+
+            @Html.DropDownListFor(m => m.Zaliczka, listItems, new { @class = "form-control" })
+
+
+            @Html.ValidationMessageFor(model => model.Zaliczka, "", new { @class = "text-danger" })
+
         </div>
+
     </div>
     <div class="form-group row mt-3 mb-3">
 
@@ -78,4 +88,15 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+    <script>
+        $(function () {
+
+            $("#NrTel").mask("999-999-999");
+        });
+
+    </script>
 }

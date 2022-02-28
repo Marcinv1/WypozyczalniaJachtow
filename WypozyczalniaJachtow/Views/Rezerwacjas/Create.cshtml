@@ -13,85 +13,103 @@
     }
 
 
+
 }
+
+
 @using (Html.BeginForm())
 {
+
+
+
+
+
     @Html.AntiForgeryToken()
 
-<div class="form-horizontal">
-    <h4>Rezerwacja</h4>
-    <hr />
-    @Html.ValidationSummary(false, "", new { @class = "text-danger" })
-<div class="form-group row">
-        @Html.LabelFor(m => m.JachtID, "Model jachtu", htmlAttributes: new { @class = "control-label col-md-4" })
+    <div class="form-horizontal">
+        <h4>Rezerwacja</h4>
+        <hr />
+        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+        <div class="form-group row">
+            @Html.LabelFor(m => m.JachtID, "Model jachtu", htmlAttributes: new { @class = "control-label col-md-4" })
 
-        @Html.DropDownListFor(m => m.JachtID, IDs, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.JachtID, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(m => m.JachtID, IDs, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.JachtID, "", new { @class = "text-danger" })
 
-</div>
-    <div class="form-group row">
-        @Html.LabelFor(model => model.Imie, "Imię osoby rezerwującej", htmlAttributes: new { @class = "control-label col-md-4" })
+        </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Imie, "Imię osoby rezerwującej", htmlAttributes: new { @class = "control-label col-md-4" })
 
-        @Html.EditorFor(model => model.Imie, new { htmlAttributes = new { @class = "form-control", required = "required" } })
-        @Html.ValidationMessageFor(model => model.Imie, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Imie, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+            @Html.ValidationMessageFor(model => model.Imie, "", new { @class = "text-danger" })
 
-    </div>
+        </div>
 
-    <div class="form-group row">
-        @Html.LabelFor(model => model.NrTel, "Numer telefonu osoby rezerwującej", htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="form-group row">
+            @Html.LabelFor(model => model.NrTel, "Numer telefonu osoby rezerwującej", htmlAttributes: new { @class = "control-label col-md-4" })
 
-        @Html.EditorFor(model => model.NrTel, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.NrTel, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.NrTel, new { htmlAttributes = new { @class = "form-control", placeholder = "format XXX-XXX-XXX" } })
+            @Html.ValidationMessageFor(model => model.NrTel, "", new { @class = "text-danger" })
+        </div>
 
-    </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.DataOd, "Data rozpoczęcia rezerwacji", htmlAttributes: new { @class = "control-label col-md-4" })
 
-    <div class="form-group row">
-        @Html.LabelFor(model => model.DataOd, "Data rozpoczęcia rezerwacji", htmlAttributes: new { @class = "control-label col-md-4" })
+            @Html.TextBoxFor(model => model.DataOd, new { @class = "form-control", type = "date", required = "required" })
+            @Html.ValidationMessageFor(model => model.DataOd, "", new { @class = "text-danger" })
+        </div>
 
-        @Html.TextBoxFor(model => model.DataOd, new { @class = "form-control", type = "date", required = "required" })
-        @Html.ValidationMessageFor(model => model.DataOd, "", new { @class = "text-danger" })
-    </div>
+        <div class="form-group  row">
+            @Html.LabelFor(model => model.DataDo, "Data zakończenia rezerwacji", htmlAttributes: new { @class = "control-label col-md-4" })
 
-    <div class="form-group  row">
-        @Html.LabelFor(model => model.DataDo, "Data zakończenia rezerwacji", htmlAttributes: new { @class = "control-label col-md-4" })
+            @Html.TextBoxFor(model => model.DataDo, new { @class = "form-control", type = "date", required = "required" })
+            @Html.ValidationMessageFor(model => model.DataDo, "", new { @class = "text-danger" })
+        </div>
 
-        @Html.TextBoxFor(model => model.DataDo, new { @class = "form-control", type = "date", required = "required" })
-        @Html.ValidationMessageFor(model => model.DataDo, "", new { @class = "text-danger" })
-    </div>
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Zaliczka, "Zaliczka", htmlAttributes: new { @class = "control-label col-md-4" })
 
-    <div class="form-group row">
-        @Html.LabelFor(model => model.Zaliczka, "Zaliczka", htmlAttributes: new { @class = "control-label col-md-4" })
-
-        @{
-            var listItems = new List<SelectListItem>()
-                            {
+            @{
+                var listItems = new List<SelectListItem>()
+                        {
                             new SelectListItem {Text = "Tak",   Value = true.ToString()},
                             new SelectListItem {Text = "Nie", Value = false.ToString()}
                         };
-        }
+            }
 
-        @Html.DropDownListFor(m => m.Zaliczka, listItems, new { @class = "form-control" })
+            @Html.DropDownListFor(m => m.Zaliczka, listItems, new { @class = "form-control" })
 
 
-        @Html.ValidationMessageFor(model => model.Zaliczka, "", new { @class = "text-danger" })
-
-    </div>
-
-    <div class="form-group row mt-3 mb-3">
-
-        <div class="col-md-6 pe-1">
-            @Html.ActionLink("Wróć do listy", "Index", "Rezerwacjas", new { @class = "btn bg-dark text-light col-12" })
+            @Html.ValidationMessageFor(model => model.Zaliczka, "", new { @class = "text-danger" })
 
         </div>
+        
 
-        <div class="col-md-6 ps-1">
-            <button type="submit" class="btn bg-dark text-light col-12">Dodaj rezerwację</button>
-        </div>
+        <div class="form-group row mt-3 mb-3">
+
+            <div class="col-md-6 pe-1">
+                @Html.ActionLink("Wróć do listy", "Index", "Rezerwacjas", new { @class = "btn bg-dark text-light col-12" })
+
+            </div>
+
+            <div class="col-md-6 ps-1">
+                <button type="submit" class="btn bg-dark text-light col-12">Dodaj rezerwację</button>
+            </div>
+                        
+            </div>
     </div>
-</div>
 }
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+    <script>
+        $(function () {
+
+            $("#NrTel").mask("999-999-999");
+        });
+
+    </script>
 }

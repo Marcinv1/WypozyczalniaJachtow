@@ -6,7 +6,7 @@
 <p>
     @Html.ActionLink("Dodaj rezerwację", "Create")
 </p>
-<table class="table">
+<table class="table" id="features">
     <tr>
         <th>
             Imię Rezerwującego
@@ -21,7 +21,7 @@
             Zakończenie rezerwacji
         </th>
         <th>
-            @Html.DisplayNameFor(Model => Model.Zaliczka)
+           @* @Html.DisplayNameFor(Model => Model.Zaliczka)*@ Zaliczka
         </th>
         <th>
             Nazwa jachtu
@@ -49,7 +49,15 @@
             @Html.DisplayFor(modelItem => DataDo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Zaliczka)
+            @*@Html.DisplayFor(modelItem => item.Zaliczka)*@
+            @if (item.Zaliczka == true)
+            {
+            <i class="bi bi-hand-thumbs-up"> Zapłacono</i>
+            }
+            else
+            {
+            <i class="text-danger bi bi-hand-thumbs-down-fill"> Nie zapłacono</i>
+            }
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Jachty.Name)
